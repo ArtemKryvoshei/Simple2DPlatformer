@@ -3,7 +3,7 @@
     public static class ConstantsHolder
     {
         //Scene names
-        public const string LOADER_SCENE_NAME = "BootstrapScene";
+        public const string LOADER_SCENE_NAME = "BootstrapLogic";
         public const string GAMEPLAY_SCENE_NAME = "GameplayScene";  
         
         
