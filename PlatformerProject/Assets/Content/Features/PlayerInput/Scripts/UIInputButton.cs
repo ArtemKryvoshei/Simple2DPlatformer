@@ -20,7 +20,6 @@ namespace Content.Features.PlayerInput.Scripts
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            Debug.Log("[UIInputButton] call input type: " + _inputType);
             switch (_inputType)
             {
                 case UIInputType.MoveLeft:
@@ -33,7 +32,7 @@ namespace Content.Features.PlayerInput.Scripts
                     _eventBus.Publish(new PlayerShootInputEvent());
                     break;
                 case UIInputType.Jump:
-                    _eventBus.Publish(new PlayerJumpInputEvent()); // Jump — моментальный
+                    _eventBus.Publish(new PlayerJumpInputEvent());
                     break;
                 
             }
@@ -41,7 +40,6 @@ namespace Content.Features.PlayerInput.Scripts
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            Debug.Log("[UIInputButton] STOP input type: " + _inputType);
             switch (_inputType)
             {
                 case UIInputType.MoveLeft:
