@@ -1,4 +1,6 @@
-﻿using Content.Features.ConfigsSystem.Scripts;
+﻿using System;
+using Content.Features.ConfigsSystem.Scripts;
+using Content.Features.PlayerAnimator.Scripts;
 using Content.Features.PlayerInput.Scripts;
 using Core.EventBus;
 using UnityEngine;
@@ -36,11 +38,17 @@ namespace Content.Features.PlayerActions.Scripts
             _rigidbody = GetComponent<Rigidbody2D>();
         }
 
+        private void FixedUpdate()
+        {
+            IsGrounded();
+        }
+
         private void OnJumpPressed(PlayerJumpInputEvent obj)
         {
             if (IsGrounded())
             {
                 _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpForce);
+                _eventBus.Publish(new OnJumpedAnimatorEvent());
             }
         }
 
@@ -48,7 +56,11 @@ namespace Content.Features.PlayerActions.Scripts
         {
             Vector2 origin = groundCheckPoint != null ? groundCheckPoint.position : transform.position;
             RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, groundCheckDistance, groundMask);
-            return hit.collider != null;
+            bool result = hit.collider != null;
+            GroundedAnimatorEvent groundedEvent = new GroundedAnimatorEvent();
+            groundedEvent._isGrounded = result;
+            _eventBus.Publish(groundedEvent);
+            return result;
         }
 
         private void OnDestroy()
