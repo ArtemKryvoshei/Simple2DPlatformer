@@ -7,6 +7,10 @@ namespace AddressablesGenerated
         {
             public const string Bullet = "Bullet";
         }
+        public static class Levels
+        {
+            public const string Level_1 = "Level_1";
+        }
         public static class DefaultLocalGroup
         {
             // Empty group
