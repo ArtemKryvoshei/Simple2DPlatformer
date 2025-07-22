@@ -1,4 +1,5 @@
-﻿using Content.Features.PlayerInput.Scripts;
+﻿using Content.Features.ConfigsSystem.Scripts;
+using Content.Features.PlayerInput.Scripts;
 using Core.EventBus;
 using UnityEngine;
 using Zenject;
@@ -8,19 +9,26 @@ namespace Content.Features.PlayerActions.Scripts
     public class PlayerJumpController : MonoBehaviour
     {
         [Header("Jump Settings")]
-        [SerializeField] private float jumpForce = 5f;
         [SerializeField] private LayerMask groundMask;
         [SerializeField] private Transform groundCheckPoint;
         [SerializeField] private float groundCheckDistance = 0.1f;
-
+        
         private Rigidbody2D _rigidbody;
         private IEventBus _eventBus;
+        private PlayerConfig playerConfig;
+        
+        private float jumpForce = 0;
 
         [Inject]
-        public void Construct(IEventBus eventBus)
+        public void Construct(IEventBus eventBus, PlayerConfig playerC)
         {
             _eventBus = eventBus;
+            playerConfig = playerC;
             _eventBus.Subscribe<PlayerJumpInputEvent>(OnJumpPressed);
+            if (playerConfig != null)
+            {
+                jumpForce = playerConfig.JumpForce;
+            }
         }
 
         private void Awake()

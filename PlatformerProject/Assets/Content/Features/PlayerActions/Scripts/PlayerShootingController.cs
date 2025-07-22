@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using Content.Features.AmmoSystem;
 using Content.Features.BulletsPool;
+using Content.Features.ConfigsSystem.Scripts;
 using Content.Features.PlayerInput.Scripts;
 using Core.EventBus;
 using UnityEngine;
@@ -11,29 +13,37 @@ namespace Content.Features.PlayerActions.Scripts
     public class PlayerShootingController : MonoBehaviour
     {
         [SerializeField] private Transform firePoint;
-        [SerializeField] private float fireForce = 10f;
-        [SerializeField] private float fireCooldown = 0.25f;
-
+        
+        
         private IEventBus _eventBus;
         private IBulletPool _bulletPool;
+        private IAmmoSystem _ammoSystem;
+        private PlayerConfig _playerConfig;
+        private float fireForce = 10f;
+        private float fireCooldown = 0.25f;
         private float _currentTime = 0f;
         private bool canShoot;
         private bool autoFire;
         private bool isfacingRight;
         
         [Inject]
-        public void Construct(IEventBus eventBus, IBulletPool bulletPool)
+        public void Construct(IEventBus eventBus, IBulletPool bulletPool, IAmmoSystem _amSys, PlayerConfig playerC)
         {
             _eventBus = eventBus;
             _bulletPool = bulletPool;
+            _ammoSystem = _amSys;
+            _playerConfig = playerC;
             _eventBus.Subscribe<PlayerShootInputEvent>(OnShoot);
             _eventBus.Subscribe<PlayerShootInputReleasedEvent>(OnShootReleased);
             _eventBus.Subscribe<PlayerMoveRightInputEvent>(RotateRight);
             _eventBus.Subscribe<PlayerMoveLeftInputEvent>(RotateLeft);
+            if (_playerConfig != null)
+            {
+                fireForce = _playerConfig.FireForce;
+                fireCooldown = _playerConfig.FireCooldown;
+            }
         }
-
         
-
         private void Update()
         {
             if (!canShoot)
@@ -73,6 +83,12 @@ namespace Content.Features.PlayerActions.Scripts
         
         private void FireBullet()
         {
+            if (_ammoSystem?.TryConsumeAmmo() is false)
+            {
+                Debug.Log("[PlayerShootingController] No ammo!");
+                return;
+            }
+
             canShoot = false;
             GameObject bulletGO = _bulletPool.Rent();
             if (bulletGO == null) return;

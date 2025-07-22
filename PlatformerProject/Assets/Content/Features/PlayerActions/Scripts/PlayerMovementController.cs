@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Content.Features.ConfigsSystem.Scripts;
+using UnityEngine;
 using Content.Features.PlayerInput.Scripts;
 using Core.EventBus;
 using Zenject;
@@ -8,20 +9,26 @@ namespace Content.Features.PlayerActions.Scripts
     public class PlayerMovementController : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D _rigidbody;
-        [SerializeField] private float _moveSpeed = 5f;
-
+        
+        private PlayerConfig playerConfig;
         private IEventBus _eventBus;
+        
+        private float _moveSpeed = 0;
         private float _currentInputDirection = 0f;
 
         [Inject]
-        public void Construct(IEventBus eventBus)
+        public void Construct(IEventBus eventBus, PlayerConfig playerC)
         {
             _eventBus = eventBus;
-
+            playerConfig = playerC;
             _eventBus.Subscribe<PlayerMoveLeftInputEvent>(OnMoveLeftPressed);
             _eventBus.Subscribe<PlayerMoveRightInputEvent>(OnMoveRightPressed);
             _eventBus.Subscribe<PlayerMoveLeftInputReleasedEvent>(OnMoveLeftReleased);
             _eventBus.Subscribe<PlayerMoveRightInputReleasedEvent>(OnMoveRightReleased);
+            if (playerConfig != null)
+            {
+                _moveSpeed = playerConfig.MoveSpeed;
+            }
         }
 
         private void FixedUpdate()

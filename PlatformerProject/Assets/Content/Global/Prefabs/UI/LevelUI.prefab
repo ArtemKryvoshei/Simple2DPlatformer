@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 8803502539030931575}
   - component: {fileID: 7341121090073968379}
   - component: {fileID: 8529843049285704228}
+  - component: {fileID: 336076629241083147}
   m_Layer: 5
   m_Name: LevelUI
   m_TagString: Untagged
@@ -513,6 +514,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 2806422718225024145}
   _format: Level {0}
+--- !u!114 &336076629241083147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397785040994288612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16752deb69c541959ba1f77b7d577431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoText: {fileID: 7174044179276336730}
 --- !u!1 &720900855314803040
 GameObject:
   m_ObjectHideFlags: 0
