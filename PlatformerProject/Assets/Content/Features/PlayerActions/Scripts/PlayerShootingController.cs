@@ -59,6 +59,8 @@ namespace Content.Features.PlayerActions.Scripts
         {
             _eventBus.Unsubscribe<PlayerShootInputEvent>(OnShoot);
             _eventBus.Unsubscribe<PlayerShootInputReleasedEvent>(OnShootReleased);
+            _eventBus.Unsubscribe<PlayerMoveRightInputEvent>(RotateRight);
+            _eventBus.Unsubscribe<PlayerMoveLeftInputEvent>(RotateLeft);
         }
 
         private void OnShoot(PlayerShootInputEvent _) => autoFire = true;

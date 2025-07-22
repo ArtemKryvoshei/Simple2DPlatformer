@@ -1,4 +1,5 @@
-﻿using Content.Features.BulletsPool;
+﻿using System;
+using Content.Features.BulletsPool;
 using Content.Features.PlayerInput.Scripts;
 using Core.EventBus;
 using UnityEngine;
@@ -33,6 +34,12 @@ namespace Content.Features.PlayerAnimator.Scripts
         {
             isfacingRight = true;
             transform.rotation = Quaternion.Euler(0, rotationRight, 0);
+        }
+
+        private void OnDestroy()
+        {
+            _eventBus.Unsubscribe<PlayerMoveRightInputEvent>(HandleMoveRight);
+            _eventBus.Unsubscribe<PlayerMoveLeftInputEvent>(HandleMoveLeft);
         }
     }
 }

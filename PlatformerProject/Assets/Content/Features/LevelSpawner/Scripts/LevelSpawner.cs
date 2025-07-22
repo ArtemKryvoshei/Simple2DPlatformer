@@ -33,6 +33,7 @@ namespace Content.Features.LevelSpawner.Scripts
 
         public async UniTask SpawnCurrentLevelAsync()
         {
+            DestroyCurrentLevel();
             int currentIndex = _levelProgressService.CurrentLevelIndex + 1;
             string address = $"Level_{currentIndex}";
 

@@ -51,5 +51,4 @@ namespace Core.PoolSystem
             _pool.Push(obj);
         }
     }
-
 }

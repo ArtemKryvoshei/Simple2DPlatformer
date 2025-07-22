@@ -5,6 +5,10 @@
         MoveLeft,
         MoveRight,
         Shoot,
-        Jump
+        Jump,
+        Pause,
+        Unpause,
+        StartNextLevel,
+        ReloadLevel
     }
 }

@@ -15,7 +15,7 @@ namespace Content.Features.BulletsPool
         {
             Container.Bind<IBulletPool>().To<BulletPool>().AsSingle()
                 .WithArguments(bulletAddress, bulletPoolParent)
-                .NonLazy(); // чтобы создать сразу, либо warm-up вызвать вручную позже
+                .NonLazy(); 
         }
 
         public override async void Start()

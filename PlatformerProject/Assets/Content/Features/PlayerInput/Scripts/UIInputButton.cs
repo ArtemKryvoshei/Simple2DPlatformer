@@ -1,4 +1,5 @@
-﻿using Core.EventBus;
+﻿using Content.Features.GameState.Scripts;
+using Core.EventBus;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -33,6 +34,18 @@ namespace Content.Features.PlayerInput.Scripts
                     break;
                 case UIInputType.Jump:
                     _eventBus.Publish(new PlayerJumpInputEvent());
+                    break;
+                case UIInputType.Pause:
+                    _eventBus.Publish(new PauseGameEvent());
+                    break;
+                case UIInputType.Unpause:
+                    _eventBus.Publish(new UnpauseGameEvent());
+                    break;
+                case UIInputType.StartNextLevel:
+                    _eventBus.Publish(new StartNextLevelGameEvent());
+                    break;
+                case UIInputType.ReloadLevel:
+                    _eventBus.Publish(new ReloadLevelGameEvent());
                     break;
                 
             }
