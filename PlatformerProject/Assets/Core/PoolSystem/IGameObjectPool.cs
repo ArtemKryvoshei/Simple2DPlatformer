@@ -9,5 +9,6 @@ namespace Core.PoolSystem
         UniTask WarmUpAsync(int count, CancellationToken token = default);
         GameObject Rent();
         void Return(GameObject obj);
+        bool Contains(GameObject obj, bool includeRented);
     }
 }

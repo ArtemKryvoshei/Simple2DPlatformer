@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections.Generic;
+using Content.Features.EnemySpawners.Scripts;
 using Content.Features.GameState.Scripts;
 using Content.Features.PlayerInput.Scripts;
 using Core.EventBus;
@@ -11,6 +12,7 @@ namespace Content.Features.LevelSpawner.Scripts
     public class LevelController : MonoBehaviour
     {
         [SerializeField] private Transform _playerSpawnPoint;
+        [SerializeField] private EnemySpawner[] enemiesSpawners;
 
         private IEventBus _eventBus;
         
@@ -24,6 +26,10 @@ namespace Content.Features.LevelSpawner.Scripts
         private void Start()
         {
             CallLevelLoadedEvents();
+            foreach (var spawner in enemiesSpawners)
+            {
+                spawner.SpawnMyEnemy();
+            }
         }
         
         private void OnDestroy()

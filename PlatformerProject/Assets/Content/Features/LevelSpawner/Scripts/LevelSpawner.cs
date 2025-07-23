@@ -30,7 +30,7 @@ namespace Content.Features.LevelSpawner.Scripts
 
         private void Start()
         {
-            CallSpawnLogic();
+            //CallSpawnLogic();
         }
 
         private void OnDestroy()

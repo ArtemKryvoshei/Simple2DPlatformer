@@ -5,7 +5,9 @@ namespace AddressablesGenerated
     {
         public static class GameObjects
         {
+            public const string EnemyDeathEffect = "EnemyDeathEffect";
             public const string Bullet = "Bullet";
+            public const string Enemy_Melee = "Enemy_Melee";
         }
         public static class Levels
         {

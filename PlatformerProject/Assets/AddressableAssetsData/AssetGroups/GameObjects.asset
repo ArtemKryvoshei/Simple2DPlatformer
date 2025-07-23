@@ -17,6 +17,16 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 09bd15a4db4cb0749931191bdfdf6d97
   m_SerializeEntries:
+  - m_GUID: 1998195a24082724d832e585a3eb00cc
+    m_Address: Enemy_Melee
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61218b88adc069e449165df60dea126b
+    m_Address: EnemyDeathEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ca5f3624862511f4fbd38970c0fc294c
     m_Address: Bullet
     m_ReadOnly: 0

@@ -27,6 +27,25 @@ namespace Core.PrefabFactory
 
             // Zenject создаёт инстанс и внедряет зависимости
             var instance = _container.InstantiatePrefab(prefab, parent);
+            
+            _container.InjectGameObject(instance);
+            
+            return instance;
+        }
+        
+        public async UniTask<GameObject> CreateAsync(string address, DiContainer containerOverride, Transform parent = null, CancellationToken token = default)
+        {
+            var handle = Addressables.LoadAssetAsync<GameObject>(address);
+            await handle.ToUniTask(cancellationToken: token);
+
+            if (handle.Status != UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
+                throw new System.Exception($"[PrefabFactory] Failed to load prefab at address: {address}");
+
+            var prefab = handle.Result;
+
+            var instance = containerOverride.InstantiatePrefab(prefab, parent);
+            containerOverride.InjectGameObject(instance);
+
             return instance;
         }
     }

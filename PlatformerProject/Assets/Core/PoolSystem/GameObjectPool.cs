@@ -13,6 +13,9 @@ namespace Core.PoolSystem
         private readonly string _address;
         private readonly Transform _parent;
         private readonly Stack<GameObject> _pool = new();
+        
+        private readonly HashSet<GameObject> _rentObjects = new();
+
 
         public GameObjectPool(IPrefabFactory prefabFactory, string address, Transform parent = null)
         {
@@ -38,6 +41,7 @@ namespace Core.PoolSystem
             if (obj != null)
             {
                 obj.SetActive(true);
+                _rentObjects.Add(obj);
                 return obj;
             }
 
@@ -48,7 +52,22 @@ namespace Core.PoolSystem
         {
             obj.SetActive(false);
             obj.transform.SetParent(_parent);
+            _rentObjects.Remove(obj);
             _pool.Push(obj);
+        }
+
+        public bool Contains(GameObject obj, bool includeRented)
+        {
+            if (includeRented)
+            {
+                return _rentObjects.Contains(obj) || _pool.Contains(obj);
+            }
+            else
+            {
+                _pool.Contains(obj);
+            }
+
+            return false;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Core.PrefabFactory
     {
         public override void InstallBindings()
         {
-            Container.Bind<IPrefabFactory>().To<PrefabFactory>().AsSingle();
+            //Container.Bind<IPrefabFactory>().To<PrefabFactory>().AsSingle();
         }
     }
 }
