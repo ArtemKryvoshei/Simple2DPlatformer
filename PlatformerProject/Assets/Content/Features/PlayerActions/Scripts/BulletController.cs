@@ -7,7 +7,7 @@ namespace Content.Features.PlayerActions.Scripts
     {
         [SerializeField] private float lifeTime = 3f;
         [SerializeField] private float speed = 10f;
-        [SerializeField] private LayerMask collisionMask; // какие слои считать коллизией
+        [SerializeField] private LayerMask collisionMask;
 
         private IBulletPool _pool;
         private Vector2 _direction;

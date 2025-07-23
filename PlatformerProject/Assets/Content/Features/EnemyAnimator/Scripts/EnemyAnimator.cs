@@ -1,5 +1,9 @@
-﻿using Core.Other;
+﻿using Content.Features.GameState.Scripts;
+using Content.Features.LevelProgressService.Scripts;
+using Core.EventBus;
+using Core.Other;
 using UnityEngine;
+using Zenject;
 
 
 namespace Content.Features.EnemyAnimator.Scripts
@@ -12,7 +16,7 @@ namespace Content.Features.EnemyAnimator.Scripts
         [SerializeField] private float rotationLeft = 180;
         [SerializeField] private string movingBoolName = "";
         [SerializeField] private Rigidbody2D rb;
-
+        
         private void LateUpdate()
         {
             AnimateEnemy();

@@ -133,4 +133,4 @@ MonoBehaviour:
   speed: 1.2
   collisionMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 80

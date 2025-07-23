@@ -8,4 +8,5 @@
     public struct UnpauseGameEvent { }
     public struct StartNextLevelGameEvent { }
     public struct ReloadLevelGameEvent { }
+    public struct RespawnLevelPrefab { }
 }

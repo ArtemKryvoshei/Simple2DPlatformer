@@ -1,4 +1,5 @@
 ﻿using System;
+using Content.Features.GameState.Scripts;
 using Content.Features.PlayerInput.Scripts;
 using Core.EventBus;
 using UnityEngine;
@@ -25,6 +26,10 @@ namespace Content.Features.PlayerAnimator.Scripts
             _eventBus.Subscribe<PlayerMoveRightInputEvent>(OnRunningRight);
             _eventBus.Subscribe<PlayerMoveLeftInputReleasedEvent>(OnStopRunningLeft);
             _eventBus.Subscribe<PlayerMoveRightInputReleasedEvent>(OnStopRunningRight);
+            
+            _eventBus.Subscribe<OnLevelCompleteEvent>(@event => StopPlayRunning());
+            _eventBus.Subscribe<ReloadLevelGameEvent>(@event => StopPlayRunning());
+            _eventBus.Subscribe<OnGameOverEvent>(@event => StopPlayRunning());
         }
 
         private void OnStopRunningRight(PlayerMoveRightInputReleasedEvent obj)

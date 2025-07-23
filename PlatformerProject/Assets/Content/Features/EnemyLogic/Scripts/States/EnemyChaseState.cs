@@ -76,6 +76,7 @@ namespace Content.Features.EnemyLogic.Scripts.States
 
         private void OnSeeTarget(OnEntitySeeTarget evt)
         {
+            if (Enemy == null) return; 
             _objectId = Enemy.gameObject.GetInstanceID();
             if (evt.ObserverId == _objectId)
             {

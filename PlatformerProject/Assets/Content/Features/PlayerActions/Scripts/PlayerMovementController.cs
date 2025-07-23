@@ -1,4 +1,5 @@
 ﻿using Content.Features.ConfigsSystem.Scripts;
+using Content.Features.GameState.Scripts;
 using UnityEngine;
 using Content.Features.PlayerInput.Scripts;
 using Core.EventBus;
@@ -25,10 +26,40 @@ namespace Content.Features.PlayerActions.Scripts
             _eventBus.Subscribe<PlayerMoveRightInputEvent>(OnMoveRightPressed);
             _eventBus.Subscribe<PlayerMoveLeftInputReleasedEvent>(OnMoveLeftReleased);
             _eventBus.Subscribe<PlayerMoveRightInputReleasedEvent>(OnMoveRightReleased);
+            _eventBus.Subscribe<OnGameOverEvent>(StopOnGameOver);
+            _eventBus.Subscribe<OnLevelCompleteEvent>(StopOnLevelComplete);
+            _eventBus.Subscribe<StartNextLevelGameEvent>(OnStartNextLevelMove);
+            _eventBus.Subscribe<ReloadLevelGameEvent>(OnReloadLevelMove);
             if (playerConfig != null)
             {
                 _moveSpeed = playerConfig.MoveSpeed;
             }
+        }
+
+        private void OnReloadLevelMove(ReloadLevelGameEvent obj)
+        {
+            if (playerConfig != null)
+            {
+                _moveSpeed = playerConfig.MoveSpeed;
+            }
+        }
+
+        private void OnStartNextLevelMove(StartNextLevelGameEvent obj)
+        {
+            if (playerConfig != null)
+            {
+                _moveSpeed = playerConfig.MoveSpeed;
+            }
+        }
+
+        private void StopOnLevelComplete(OnLevelCompleteEvent obj)
+        {
+            ResetMovement();
+        }
+
+        private void StopOnGameOver(OnGameOverEvent obj)
+        {
+            ResetMovement();
         }
 
         private void FixedUpdate()
@@ -36,6 +67,13 @@ namespace Content.Features.PlayerActions.Scripts
             Vector2 velocity = _rigidbody.velocity;
             velocity.x = _currentInputDirection * _moveSpeed;
             _rigidbody.velocity = velocity;
+        }
+
+        private void ResetMovement()
+        {
+            _moveSpeed = 0;
+            _currentInputDirection = 0;
+            _rigidbody.velocity = Vector2.zero;
         }
 
         private void OnMoveLeftPressed(PlayerMoveLeftInputEvent _)
@@ -50,14 +88,12 @@ namespace Content.Features.PlayerActions.Scripts
 
         private void OnMoveLeftReleased(PlayerMoveLeftInputReleasedEvent _)
         {
-            // Если отпущено влево, но зажато вправо — продолжаем двигать вправо
-            _currentInputDirection = Input.GetKey(KeyCode.D) ? 1f : 0f;
+            _currentInputDirection = 0;
         }
 
         private void OnMoveRightReleased(PlayerMoveRightInputReleasedEvent _)
         {
-            // Если отпущено вправо, но зажато влево — продолжаем двигать влево
-            _currentInputDirection = Input.GetKey(KeyCode.A) ? -1f : 0f;
+            _currentInputDirection = 0;
         }
 
         private void OnDestroy()
@@ -66,6 +102,10 @@ namespace Content.Features.PlayerActions.Scripts
             _eventBus.Unsubscribe<PlayerMoveRightInputEvent>(OnMoveRightPressed);
             _eventBus.Unsubscribe<PlayerMoveLeftInputReleasedEvent>(OnMoveLeftReleased);
             _eventBus.Unsubscribe<PlayerMoveRightInputReleasedEvent>(OnMoveRightReleased);
+            _eventBus.Unsubscribe<OnGameOverEvent>(StopOnGameOver);
+            _eventBus.Unsubscribe<OnLevelCompleteEvent>(StopOnLevelComplete);
+            _eventBus.Unsubscribe<StartNextLevelGameEvent>(OnStartNextLevelMove);
+            _eventBus.Unsubscribe<ReloadLevelGameEvent>(OnReloadLevelMove);
         }
     }
 }

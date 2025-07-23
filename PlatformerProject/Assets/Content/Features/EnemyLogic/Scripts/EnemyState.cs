@@ -30,5 +30,4 @@ namespace Content.Features.EnemyLogic.Scripts
 
         public abstract void OnZenjectConstruct();
     }
-
 }

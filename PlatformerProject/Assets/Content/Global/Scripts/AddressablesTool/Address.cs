@@ -10,6 +10,7 @@ namespace AddressablesGenerated
         public static class Levels
         {
             public const string Level_1 = "Level_1";
+            public const string Level_2 = "Level_2";
         }
         public static class DefaultLocalGroup
         {

@@ -45,7 +45,6 @@ namespace Content.Features.EnemyLogic.Scripts.CommonEntitiesScripts
             {
                 seeEvent.TargetPosition = Vector2.zero;
             }
-            Debug.Log("Is there a target?: " + (seeEvent.TargetPosition != Vector2.zero));
             _eventBus.Publish(seeEvent);
         }
 
