@@ -1019,6 +1019,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Melee (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 190374445511118279, guid: 1998195a24082724d832e585a3eb00cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666075565864717690, guid: 1998195a24082724d832e585a3eb00cc, type: 3}
+      propertyPath: wallRayLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7880645587465203032, guid: 1998195a24082724d832e585a3eb00cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.139141
@@ -1631,6 +1639,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3197912092902013109, guid: c800f1bb490739e48a311021cf4c99fc, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5797821136582180110, guid: c800f1bb490739e48a311021cf4c99fc, type: 3}
       propertyPath: m_Size.y
       value: 3.0097415
@@ -1662,6 +1674,14 @@ PrefabInstance:
     - target: {fileID: 190374445511118279, guid: 1998195a24082724d832e585a3eb00cc, type: 3}
       propertyPath: m_Name
       value: Enemy_Melee (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 190374445511118279, guid: 1998195a24082724d832e585a3eb00cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309060488891162037, guid: 1998195a24082724d832e585a3eb00cc, type: 3}
+      propertyPath: _direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7880645587465203032, guid: 1998195a24082724d832e585a3eb00cc, type: 3}
       propertyPath: m_LocalPosition.x
