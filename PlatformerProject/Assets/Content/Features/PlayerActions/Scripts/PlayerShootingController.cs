@@ -43,7 +43,15 @@ namespace Content.Features.PlayerActions.Scripts
                 fireCooldown = _playerConfig.FireCooldown;
             }
         }
-        
+
+        private void Start()
+        {
+            if (_playerConfig != null)
+            {
+                _ammoSystem.SetMaxAmmo(_playerConfig.MaxAmmo);
+            }
+        }
+
         private void Update()
         {
             if (!canShoot)

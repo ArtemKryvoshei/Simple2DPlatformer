@@ -14,17 +14,11 @@ namespace Content.Features.AmmoSystem
         private int max;
         
         private IEventBus _eventBus;
-        private PlayerConfig config;
 
         [Inject]
-        public void Construct(IEventBus eventBus, PlayerConfig playerC)
+        public void Construct(IEventBus eventBus)
         {
             _eventBus = eventBus;
-            config = playerC;
-            if (config != null)
-            {
-                SetMaxAmmo(config.MaxAmmo);
-            }
         }
         
         public void SetMaxAmmo(int maxAmmo)

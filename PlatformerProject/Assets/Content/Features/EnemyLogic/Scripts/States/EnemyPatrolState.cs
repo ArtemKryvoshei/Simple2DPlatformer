@@ -1,4 +1,5 @@
-﻿using Content.Features.EnemyLogic.Scripts.CommonEntitiesScripts;
+﻿using System;
+using Content.Features.EnemyLogic.Scripts.CommonEntitiesScripts;
 using UnityEngine;
 
 namespace Content.Features.EnemyLogic.Scripts.States
@@ -60,6 +61,8 @@ namespace Content.Features.EnemyLogic.Scripts.States
             FlipDirection();
         }
 
+        public override void OnZenjectConstruct() { }
+
         private void FlipDirection()
         {
             _direction *= -1;
@@ -75,6 +78,12 @@ namespace Content.Features.EnemyLogic.Scripts.States
         {
             if (evt.ObjectId == _objectId)
                 _canMoveRight = evt.CanMoveRight;
+        }
+
+        private void OnDestroy()
+        {
+            _eventBus.Unsubscribe<CanMoveLeftEvent>(OnCanMoveLeft);
+            _eventBus.Unsubscribe<CanMoveRightEvent>(OnCanMoveRight);
         }
     }
 

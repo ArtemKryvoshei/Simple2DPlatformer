@@ -23,5 +23,6 @@ namespace Content.Features.EnemyLogic.Scripts.States
         }
 
         public override void ExitState() { }
+        public override void OnZenjectConstruct() { }
     }
 }

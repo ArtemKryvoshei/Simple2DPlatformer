@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2309060488891162037}
   - component: {fileID: 1340631169089238743}
   - component: {fileID: 5666075565864717690}
+  - component: {fileID: 1555487936104640630}
   m_Layer: 0
   m_Name: Enemy_Melee
   m_TagString: Untagged
@@ -208,6 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b83c279ec5e4d62887ce4cb3a12042f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaseSpeed: 5.5
+  rb: {fileID: 193568270118779504}
 --- !u!114 &5666075565864717690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,10 +228,30 @@ MonoBehaviour:
   leftWallRayOrigin: {fileID: 1369485107969006063}
   rightWallRayOrigin: {fileID: 1739707838914333494}
   edgeCheckRadius: 0.12
-  wallRayLength: 2
+  wallRayLength: 0.5
   groundLayer:
     serializedVersion: 2
-    m_Bits: 208
+    m_Bits: 80
+--- !u!114 &1555487936104640630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190374445511118279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844282b980164d669e194469d159e4d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 8
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 80
+  raycastOrigin: {fileID: 7880645587465203032}
 --- !u!1 &1642984179965459605
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +384,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7880645587465203032}
     m_Modifications:
+    - target: {fileID: 6495655524227751502, guid: 9b2edc5d9864c9c49a6b1eca0997af35, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 193568270118779504}
     - target: {fileID: 7961160090875915826, guid: 9b2edc5d9864c9c49a6b1eca0997af35, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

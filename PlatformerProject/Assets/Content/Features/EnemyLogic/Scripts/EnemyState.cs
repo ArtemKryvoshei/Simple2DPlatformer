@@ -15,6 +15,7 @@ namespace Content.Features.EnemyLogic.Scripts
         public void Construct(IEventBus eventBus)
         {
             _eventBus = eventBus;
+            OnZenjectConstruct();
         }
         
         public virtual void Initialize(Enemy enemy, EnemyStateMachine machine)
@@ -26,6 +27,8 @@ namespace Content.Features.EnemyLogic.Scripts
         public abstract void EnterState();
         public abstract void UpdateState();
         public abstract void ExitState();
+
+        public abstract void OnZenjectConstruct();
     }
 
 }
