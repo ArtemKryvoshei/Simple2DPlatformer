@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e1339a86da4a879ed1b81bf9000a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 4
+  patrolSpeed: 3
   _direction: -1
   rb: {fileID: 193568270118779504}
 --- !u!114 &1340631169089238743
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b83c279ec5e4d62887ce4cb3a12042f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 5.5
+  chaseSpeed: 4
   rb: {fileID: 193568270118779504}
 --- !u!114 &5666075565864717690
 MonoBehaviour:

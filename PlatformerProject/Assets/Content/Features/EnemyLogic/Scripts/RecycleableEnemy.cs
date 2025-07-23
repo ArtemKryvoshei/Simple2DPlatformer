@@ -24,21 +24,28 @@ namespace Content.Features.EnemyLogic.Scripts
         {
             _eventBus = eventBus;
             _eventBus.Subscribe<ReloadLevelGameEvent>(OnReloadLevel);
+            _eventBus.Subscribe<OnLevelCompleteEvent>(OnLevelComplete);
         }
+
+        private void OnLevelComplete(OnLevelCompleteEvent obj)
+        {
+            _eventBus.Unsubscribe<ReloadLevelGameEvent>(OnReloadLevel);
+        }
+
 
         private void Start()
         {
             Activate();
         }
 
+        private void OnDestroy()
+        {
+            _eventBus.Unsubscribe<OnLevelCompleteEvent>(OnLevelComplete);
+        }
+
         private void OnReloadLevel(ReloadLevelGameEvent obj)
         {
             Recycle();
-        }
-
-        private void OnDestroy()
-        {
-            _eventBus.Unsubscribe<ReloadLevelGameEvent>(OnReloadLevel);
         }
 
         public void Activate()

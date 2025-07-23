@@ -25,8 +25,7 @@ namespace Content.Features.EnemySpawners.Scripts
         {
             if (_factory != null && !string.IsNullOrEmpty(spawnEnemyName) && spawnPoint != null)
             {
-                GameObject spawnedEnemy = await _factory.CreateAsync(spawnEnemyName, sceneContainer, null);
-                spawnedEnemy.transform.position = spawnPoint.position;
+                GameObject spawnedEnemy = await _factory.CreateAsync(spawnEnemyName, sceneContainer, spawnPoint);
             }
         }
     }

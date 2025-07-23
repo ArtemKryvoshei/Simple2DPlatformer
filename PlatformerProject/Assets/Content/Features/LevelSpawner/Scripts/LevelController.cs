@@ -21,6 +21,12 @@ namespace Content.Features.LevelSpawner.Scripts
         {
             _eventBus = eventBus;
             _eventBus.Subscribe<ReloadLevelGameEvent>(OnReloadLevel);
+            _eventBus.Subscribe<OnLevelCompleteEvent>(OnLevelCompltedUnsubscribe);
+        }
+
+        private void OnLevelCompltedUnsubscribe(OnLevelCompleteEvent obj)
+        {
+            _eventBus.Unsubscribe<ReloadLevelGameEvent>(OnReloadLevel);
         }
 
         private void Start()
