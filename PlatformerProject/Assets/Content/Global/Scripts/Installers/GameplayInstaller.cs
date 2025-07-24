@@ -14,6 +14,7 @@ namespace Content.Global.Scripts
     {
         [Header("Configs")]
         [SerializeField] private PlayerConfig _playerConfig;
+        [SerializeField] private EnemyConfig _meleeEnemyConfig;
         [Header("Bullet Pool")]
         [SerializeField] private Transform bulletPoolParent;
         [SerializeField] private int bulletWarmUpCount = 20;
@@ -34,6 +35,8 @@ namespace Content.Global.Scripts
         public override void InstallBindings()
         {
             Container.Bind<PlayerConfig>().To<PlayerConfig>().FromInstance(_playerConfig).AsSingle();
+            
+            Container.Bind<EnemyConfig>().To<EnemyConfig>().FromInstance(_meleeEnemyConfig).AsSingle();
             
             Container.Bind<IAmmoSystem>().To<AmmoSystem>().AsSingle();
             

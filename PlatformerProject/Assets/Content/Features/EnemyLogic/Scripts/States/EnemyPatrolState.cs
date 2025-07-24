@@ -6,18 +6,20 @@ namespace Content.Features.EnemyLogic.Scripts.States
 {
     public class EnemyPatrolState : EnemyState
     {
-        [SerializeField] private float patrolSpeed;
         [Tooltip("-1 = left, 1 = right")]
         [Range(-1, 1)]
         [SerializeField] private int _direction;
         [SerializeField] private Rigidbody2D rb;
 
+        private float patrolSpeed;
+        
         private bool _canMoveLeft = true;
         private bool _canMoveRight = true;
         private int _objectId;
 
         public override void EnterState()
         {
+            patrolSpeed = enemyConfig.moveSpeed;
             _objectId = Enemy.gameObject.GetInstanceID();
 
             _eventBus.Subscribe<CanMoveLeftEvent>(OnCanMoveLeft);

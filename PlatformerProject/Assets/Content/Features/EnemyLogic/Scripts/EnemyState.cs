@@ -1,4 +1,5 @@
-﻿using Content.Features.GameState.Scripts;
+﻿using Content.Features.ConfigsSystem.Scripts;
+using Content.Features.GameState.Scripts;
 using Core.EventBus;
 using UnityEngine;
 using Zenject;
@@ -10,11 +11,13 @@ namespace Content.Features.EnemyLogic.Scripts
         protected EnemyStateMachine StateMachine;
         protected Enemy Enemy;
         protected IEventBus _eventBus;
+        protected EnemyConfig enemyConfig;
         
         [Inject]
-        public void Construct(IEventBus eventBus)
+        public void Construct(IEventBus eventBus, EnemyConfig config)
         {
             _eventBus = eventBus;
+            enemyConfig = config;
             OnZenjectConstruct();
         }
         

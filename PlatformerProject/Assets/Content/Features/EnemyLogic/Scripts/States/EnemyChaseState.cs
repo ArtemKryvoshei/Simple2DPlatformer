@@ -6,9 +6,10 @@ namespace Content.Features.EnemyLogic.Scripts.States
 {
     public class EnemyChaseState : EnemyState
     {
-        [SerializeField] private float chaseSpeed;
         [SerializeField] private Rigidbody2D rb;
 
+        private float chaseSpeed;
+        
         private bool _canMoveLeft = true;
         private bool _canMoveRight = true;
         private int _objectId;
@@ -16,6 +17,7 @@ namespace Content.Features.EnemyLogic.Scripts.States
 
         public override void EnterState()
         {
+            chaseSpeed = enemyConfig.chaseSpeed;
             _eventBus.Subscribe<CanMoveLeftEvent>(OnCanMoveLeft);
             _eventBus.Subscribe<CanMoveRightEvent>(OnCanMoveRight);
         }

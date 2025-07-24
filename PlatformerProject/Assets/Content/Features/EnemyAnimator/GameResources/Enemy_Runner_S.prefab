@@ -470,6 +470,7 @@ GameObject:
   - component: {fileID: 7961160090875915826}
   - component: {fileID: 7961160090875915829}
   - component: {fileID: 6495655524227751502}
+  - component: {fileID: 5453908473525291569}
   m_Layer: 8
   m_Name: Enemy_Runner_S
   m_TagString: Untagged
@@ -534,6 +535,18 @@ MonoBehaviour:
   rotationLeft: 180
   movingBoolName: isRunning
   rb: {fileID: 0}
+--- !u!210 &5453908473525291569
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7961160090875915830}
+  m_Enabled: 1
+  m_SortingLayerID: 465211405
+  m_SortingLayer: 3
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &7961160091793601460
 GameObject:
   m_ObjectHideFlags: 0

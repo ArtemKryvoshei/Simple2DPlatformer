@@ -268,7 +268,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.58, y: 1.48}
+  m_Size: {x: 1.7, y: 1.94}
   m_EdgeRadius: 0
 --- !u!114 &2871259630707047591
 MonoBehaviour:
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16edf1ddf3648ccb971db472baf268e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 3
+  detectionRadius: 1
   killableLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -402,28 +402,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3870748326076863347, guid: c589ff4470e5857469bad0859c60d61a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8854932641036457584}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c589ff4470e5857469bad0859c60d61a, type: 3}
---- !u!1 &1620601301121542248 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3870748326076863347, guid: c589ff4470e5857469bad0859c60d61a, type: 3}
-  m_PrefabInstance: {fileID: 2578910381910883099}
-  m_PrefabAsset: {fileID: 0}
---- !u!210 &8854932641036457584
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1620601301121542248}
-  m_Enabled: 1
-  m_SortingLayerID: 465211405
-  m_SortingLayer: 3
-  m_SortingOrder: 1
-  m_SortAtRoot: 1
 --- !u!4 &1620601301121542249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3870748326076863346, guid: c589ff4470e5857469bad0859c60d61a, type: 3}

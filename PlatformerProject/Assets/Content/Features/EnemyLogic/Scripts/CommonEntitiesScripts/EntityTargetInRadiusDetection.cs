@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Content.Features.ConfigsSystem.Scripts;
 using Core.EventBus;
 using UnityEngine;
 using Zenject;
@@ -8,19 +9,27 @@ namespace Content.Features.EnemyLogic.Scripts.CommonEntitiesScripts
     public class EntityTargetInRadiusDetection : MonoBehaviour
     {
         [Header("Detection Settings")]
-        [SerializeField] private float detectionRadius = 5f;
-        [SerializeField] private LayerMask targetLayer;
-        [SerializeField] private LayerMask obstacleLayer;
+        
         [SerializeField] private Transform raycastOrigin;
 
+        private float detectionRadius = 5f;
+        private LayerMask targetLayer;
+        private LayerMask obstacleLayer;
+        
         private int objectId;
         private IEventBus _eventBus;
 
         [Inject]
-        public void Construct(IEventBus eventBus)
+        public void Construct(IEventBus eventBus, EnemyConfig config)
         {
             _eventBus = eventBus;
             objectId = gameObject.GetInstanceID();
+            if (config != null)
+            {
+                detectionRadius = config.detectionRadius;
+                targetLayer = config.targetLayer;
+                obstacleLayer = config.obstacleLayer;
+            }
         }
 
         private void FixedUpdate()

@@ -1,4 +1,5 @@
-﻿using Core.EventBus;
+﻿using Content.Features.ConfigsSystem.Scripts;
+using Core.EventBus;
 using UnityEngine;
 using Zenject;
 
@@ -10,19 +11,27 @@ namespace Content.Features.EnemyLogic.Scripts.CommonEntitiesScripts
         [SerializeField] private Transform rightEdgeCheck;
         [SerializeField] private Transform leftWallRayOrigin;
         [SerializeField] private Transform rightWallRayOrigin;
-        [SerializeField] private float edgeCheckRadius = 0.1f;
-        [SerializeField] private float wallRayLength = 0.5f;
-        [SerializeField] private LayerMask groundLayer;
+        
+        
+        private float edgeCheckRadius = 0.1f;
+        private float wallRayLength = 0.5f;
+        private LayerMask groundLayer;
         
         private IEventBus _eventBus;
         private int _id;
         
         
         [Inject]
-        public void Construct(IEventBus eventBus)
+        public void Construct(IEventBus eventBus, EnemyConfig config)
         {
             _eventBus = eventBus;
-            _id = gameObject.GetInstanceID(); // Или ваш собственный ID-сервис
+            _id = gameObject.GetInstanceID();
+            if (config != null)
+            {
+                edgeCheckRadius = config.edgeCheckRadius;
+                wallRayLength = config.wallRayLength;
+                groundLayer = config.groundLayer;
+            }
         }
 
         private void FixedUpdate()

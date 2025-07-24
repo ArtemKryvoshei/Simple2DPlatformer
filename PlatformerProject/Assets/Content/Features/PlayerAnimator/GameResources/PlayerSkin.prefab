@@ -472,6 +472,7 @@ GameObject:
   - component: {fileID: 3870748326076863346}
   - component: {fileID: 3870748326076863350}
   - component: {fileID: 8444821543272938242}
+  - component: {fileID: 6956842835299884358}
   m_Layer: 0
   m_Name: PlayerSkin
   m_TagString: Player
@@ -534,6 +535,18 @@ MonoBehaviour:
   groundedBoolName: isJumping
   takeoffTriggerName: takeOff
   runningBoolName: isRunning
+--- !u!210 &6956842835299884358
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3870748326076863347}
+  m_Enabled: 1
+  m_SortingLayerID: 465211405
+  m_SortingLayer: 3
+  m_SortingOrder: 2
+  m_SortAtRoot: 1
 --- !u!1 &3870748326205668337
 GameObject:
   m_ObjectHideFlags: 0
