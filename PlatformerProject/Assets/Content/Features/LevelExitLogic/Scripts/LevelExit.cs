@@ -11,11 +11,10 @@ namespace Content.Features.LevelExitLogic.Scripts
     public class LevelExit : MonoBehaviour
     {
         [Header("Detection Settings")]
-        [SerializeField] private float detectionRadius = 5f;
         [SerializeField] private LayerMask targetLayer;
-        
+
         private IEventBus _eventBus;
-        
+
         [Inject]
         public void Construct(IEventBus eventBus)
         {
@@ -24,9 +23,11 @@ namespace Content.Features.LevelExitLogic.Scripts
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, detectionRadius, targetLayer);
-            if (targets.Length > 0)
+            if (((1 << other.gameObject.layer) & targetLayer) != 0)
+            {
                 _eventBus.Publish(new OnLevelCompleteEvent());
+            }
         }
     }
+
 }
