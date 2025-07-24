@@ -107,7 +107,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2342225253746688681
 MonoBehaviour:
@@ -193,8 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e838beaa61b94ceba8c433d8adfcc3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleDurationMax: 3
-  idleDurationMin: 1
 --- !u!114 &2309060488891162037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e1339a86da4a879ed1b81bf9000a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 3
   _direction: -1
   rb: {fileID: 193568270118779504}
 --- !u!114 &1340631169089238743
@@ -222,7 +219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b83c279ec5e4d62887ce4cb3a12042f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 4
   rb: {fileID: 193568270118779504}
 --- !u!114 &5666075565864717690
 MonoBehaviour:
@@ -240,11 +236,6 @@ MonoBehaviour:
   rightEdgeCheck: {fileID: 5113211663554115797}
   leftWallRayOrigin: {fileID: 1369485107969006063}
   rightWallRayOrigin: {fileID: 1739707838914333494}
-  edgeCheckRadius: 0.12
-  wallRayLength: 0.5
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 80
 --- !u!114 &1555487936104640630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,13 +248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844282b980164d669e194469d159e4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 8
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 80
   raycastOrigin: {fileID: 7880645587465203032}
 --- !u!1 &1642984179965459605
 GameObject:
